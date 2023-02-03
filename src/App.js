@@ -16,7 +16,7 @@ function App() {
     setLoading(true);
     try {
       const response =
-        await fetch("http://substantiveresearch.pythonanywhere.com/")
+        await fetch("https://substantiveresearch.pythonanywhere.com/")
       if (!response.ok) {
         throw new Error("Sorry something went wrong");
       }
