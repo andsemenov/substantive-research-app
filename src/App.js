@@ -36,9 +36,10 @@ function App() {
 
   return (
     <div className="app">
-      {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
       <h3>Interactions</h3>
+      {error && <p className='error-message'>{error}</p>}
+      {loading && <p className='loading-message'>Loading...</p>}
+   
       {interactions.length > 0 && <InteractionList results={countByName} />}
     </div>
   );
