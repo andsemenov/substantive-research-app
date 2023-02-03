@@ -13,7 +13,7 @@ const InteractionShow = ({ title, value }) => {
   <div className="card">
     <p>{title}: {Math.round(1000 * value) / 10 + "%"}</p>
     <div style=
-      {{ height: `${MAX_HEIGHT_GRAPH * value}px`, background: `${stringToColor(title)}`}}>
+      {{ display:'flex', height: `${MAX_HEIGHT_GRAPH * value}px`, background: `${stringToColor(title)}`}}>
     </div>
   </div>
   </div>

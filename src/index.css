@@ -45,6 +45,14 @@
     height: 150px;
   }
   
+  .card p {
+    display: flex;
+    margin: 0.2rem;
+    height: 4rem;
+    justify-content: center;
+
+  }
+
   .column {
     float: left;
     width: 20%;
@@ -69,11 +77,13 @@
         display: block;
       }
     }
+
     @media screen and (max-width: 600px) {
       .column {
         width: 50%;
       }
     }
+    
     @media screen and (max-width: 300px) {
       .column {
         width: 100%;
