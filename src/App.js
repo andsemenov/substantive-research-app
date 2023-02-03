@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import InteractionList from './components/InteractionList';
+
 
 function App() {
+  const [interactions, setInteractions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+  const fetchData = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const response =
+        await fetch("http://substantiveresearch.pythonanywhere.com/")
+      if (!response.ok) {
+        throw new Error("Sorry something went wrong");
+      }
+      const data = await response.json();
+      setInteractions(data);
+    } catch (error) {
+      setError(error.message)
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const countBy =
+    (arr, prop) => arr.reduce((prev, curr) =>
+      (prev[curr[prop]] = ++prev[curr[prop]] || 1, prev), {});
+  const countByName = countBy(interactions, 'name');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {error && <p>{error}</p>}
+      {loading && <p>Loading...</p>}
+      <h3>Interactions</h3>
+      {interactions.length > 0 && <InteractionList results={countByName} />}
     </div>
   );
 }
