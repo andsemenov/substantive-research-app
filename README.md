@@ -32,7 +32,7 @@ The InteractionShow renders graph and generates a distinct colour creating a hex
 
 ## Future Plans
 
-* sort interactions by quantity asc and desc (functionality)
+* sort interactions in ASC and DESC orders by quantity, date (functionality)
 * output data for selected period by date (functionality)
 * use third-party library to render diagrams (aesthetic)
 * add animated spinner, styled error message (aesthetic)
